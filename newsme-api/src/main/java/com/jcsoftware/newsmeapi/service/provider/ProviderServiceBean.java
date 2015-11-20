@@ -2,9 +2,11 @@ package com.jcsoftware.newsmeapi.service.provider;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jcsoftware.newsmeapi.dao.ProviderDAO;
 import com.jcsoftware.newsmeapi.model.Provider;
 
 @Transactional
@@ -26,19 +28,19 @@ public class ProviderServiceBean implements ProviderService {
 	@Override
 	public void saveProvider(Provider provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void updateProvider(Provider provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteProviderById(long id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -50,7 +52,7 @@ public class ProviderServiceBean implements ProviderService {
 	@Override
 	public void deleteAllProviders() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }
