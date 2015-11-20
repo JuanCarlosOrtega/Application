@@ -1,57 +1,63 @@
 package com.jcsoftware.newsmeapi.service.provider;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jcsoftware.newsmeapi.dao.ProviderDAO;
 import com.jcsoftware.newsmeapi.model.Provider;
+import com.jcsoftware.newsmeapi.repository.ProviderDao;
 
 @Transactional
 @Service("providerService")
 public class ProviderServiceBean implements ProviderService {
 
+	@Autowired
+	private ProviderDao providerDao;
+
 	@Override
 	public Provider findProviderById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Provider provider = providerDao.getProviderById(id);
+
+		return provider;
 	}
 
 	@Override
 	public Provider findProviderByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Provider provider = providerDao.getProviderByName(name);
+
+		return provider;
 	}
 
 	@Override
 	public void saveProvider(Provider provider) {
-		// TODO Auto-generated method stub
-
+		providerDao.addProvider(provider);
 	}
 
 	@Override
 	public void updateProvider(Provider provider) {
-		// TODO Auto-generated method stub
+		providerDao.updateProvider(provider);
 
 	}
 
 	@Override
 	public void deleteProviderById(long id) {
-		// TODO Auto-generated method stub
+		providerDao.deleteProviderById(id);
 
 	}
 
 	@Override
 	public List<Provider> fillAllProviders() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Provider> providers = new ArrayList<Provider>();
+		providers.addAll(providerDao.getAllProviders());
+		return providers;
 	}
 
 	@Override
 	public void deleteAllProviders() {
-		// TODO Auto-generated method stub
+		providerDao.deleteAllProviders();
 
 	}
 
