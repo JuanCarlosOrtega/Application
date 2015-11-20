@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.jcsoftware.newsmeapi")
-public class NewsmeConfiguration extends WebMvcConfigurerAdapter {
+public class NewsMeConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
