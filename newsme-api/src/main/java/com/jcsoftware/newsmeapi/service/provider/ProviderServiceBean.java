@@ -49,7 +49,7 @@ public class ProviderServiceBean implements ProviderService {
 	}
 
 	@Override
-	public List<Provider> fillAllProviders() {
+	public List<Provider> findAllProviders() {
 		List<Provider> providers = new ArrayList<Provider>();
 		providers.addAll(providerDao.getAllProviders());
 		return providers;

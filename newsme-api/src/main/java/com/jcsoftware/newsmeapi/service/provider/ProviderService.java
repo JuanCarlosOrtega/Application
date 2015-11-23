@@ -16,7 +16,7 @@ public interface ProviderService {
 	
 	void deleteProviderById(long id);
 	
-	List<Provider> fillAllProviders();
+	List<Provider> findAllProviders();
 	
 	void deleteAllProviders();
 
