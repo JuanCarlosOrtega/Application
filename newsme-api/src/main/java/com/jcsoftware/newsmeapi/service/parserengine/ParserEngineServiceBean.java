@@ -37,14 +37,13 @@ public class ParserEngineServiceBean implements ParserEngineService {
 		}
 		
 		Document document = Parser.xmlParser().parseInput(xmlString.toString(), "");
-		List<RssItem> items = new ArrayList<RssItem>();
 		String itemTag = parserConfiguration.getItemTag();
 		for (Element element : document.select(itemTag)) {
-			System.out.println(element);;
+			System.out.println(element);
 			System.out.println();
 			RssItem item = parseNode(parserConfiguration, element);
 			if (isValid(item)) {
-				items.add(item);
+				rssItems.add(item);
 			}			
 		}		
 

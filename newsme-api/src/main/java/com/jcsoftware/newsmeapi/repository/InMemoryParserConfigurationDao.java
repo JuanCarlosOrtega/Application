@@ -17,6 +17,7 @@ public class InMemoryParserConfigurationDao implements ParserConfigurationDao {
 		parserConfigurations = new ArrayList<ParserConfiguration>();
 		
 		ParserConfiguration elMundoParserConfiguration = new ParserConfiguration();
+		elMundoParserConfiguration.setProviderId(1);
 		elMundoParserConfiguration.setItemTag("item");
 		elMundoParserConfiguration.setItemTypeSelector("elements");
 		elMundoParserConfiguration.setTitleTag("title");
@@ -33,6 +34,7 @@ public class InMemoryParserConfigurationDao implements ParserConfigurationDao {
 		elMundoParserConfiguration.setImageTagTypeSelector("attr");
 				
 		ParserConfiguration abcParserConfiguration = new ParserConfiguration();
+		abcParserConfiguration.setProviderId(2);
 		abcParserConfiguration.setItemTag("item");
 		abcParserConfiguration.setItemTypeSelector("elements");
 		abcParserConfiguration.setTitleTag("title");
@@ -49,6 +51,7 @@ public class InMemoryParserConfigurationDao implements ParserConfigurationDao {
 		abcParserConfiguration.setCategoryTypeSelector("elements");
 		
 		ParserConfiguration elPaisParserConfiguration = new ParserConfiguration();
+		elPaisParserConfiguration.setProviderId(3);
 		elPaisParserConfiguration.setItemTag("item");
 		elPaisParserConfiguration.setItemTypeSelector("elements");
 		elPaisParserConfiguration.setTitleTag("title");
@@ -67,6 +70,7 @@ public class InMemoryParserConfigurationDao implements ParserConfigurationDao {
 		elPaisParserConfiguration.setCategoryTypeSelector("elements");
 		
 		ParserConfiguration elPeriodicoParserConfiguration = new ParserConfiguration();
+		elPeriodicoParserConfiguration.setProviderId(4);
 		elPeriodicoParserConfiguration.setItemTag("item");
 		elPeriodicoParserConfiguration.setItemTypeSelector("elements");
 		elPeriodicoParserConfiguration.setTitleTag("title");
