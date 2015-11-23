@@ -10,7 +10,7 @@ import com.jcsoftware.newsmeapi.model.ParserConfiguration;
 @Component("parserConfigurationDao")
 public class InMemoryParserConfigurationDao implements ParserConfigurationDao {
 	
-	List<ParserConfiguration> parserConfigurations;
+	private List<ParserConfiguration> parserConfigurations;
 
 	@Override
 	public ParserConfiguration getParserConfigurationByProviderId(long id) {
@@ -46,6 +46,11 @@ public class InMemoryParserConfigurationDao implements ParserConfigurationDao {
 	@Override
 	public void deleteAllParserConfigurations() {
 		parserConfigurations.clear();
+	}
+
+	@Override
+	public List<ParserConfiguration> getAllParserConfigurations() {
+		return parserConfigurations;
 	}
 
 }

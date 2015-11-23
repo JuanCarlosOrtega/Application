@@ -58,7 +58,6 @@ public class ProviderServiceBean implements ProviderService {
 	@Override
 	public void deleteAllProviders() {
 		providerDao.deleteAllProviders();
-
 	}
 
 }
