@@ -53,6 +53,7 @@ public class ParserEngineServiceBean implements ParserEngineService {
 	private RssItem parseNode(ParserConfiguration parserConfiguration, Element element) {
 		RssItem rssItem = new RssItem();
 		
+		rssItem.setProviderId(parserConfiguration.getProviderId());
 		rssItem.setTitle(applyRule(element, parserConfiguration.getTitleTag(), parserConfiguration.getTitleTypeSelector()));
 		rssItem.setAuthor(applyRule(element, parserConfiguration.getCreatorTag(), parserConfiguration.getCreatorTypeSelector()));
 		rssItem.setDescription(applyRule(element, parserConfiguration.getDescriptionTag(), parserConfiguration.getDescriptionTypeSelector()));
