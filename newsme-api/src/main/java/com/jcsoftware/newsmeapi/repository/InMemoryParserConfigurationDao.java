@@ -82,11 +82,28 @@ public class InMemoryParserConfigurationDao implements ParserConfigurationDao {
 		elPeriodicoParserConfiguration.setDescriptionTag("description");
 		elPeriodicoParserConfiguration.setDescriptionTypeSelector("text");
 		
+		ParserConfiguration expansionParserConfiguration = new ParserConfiguration();
+		expansionParserConfiguration.setProviderId(5);
+		expansionParserConfiguration.setItemTag("item");
+		expansionParserConfiguration.setItemTypeSelector("elements");
+		expansionParserConfiguration.setTitleTag("title");
+		expansionParserConfiguration.setTitleTypeSelector("text");
+		expansionParserConfiguration.setCreatorTag("dc|creator");
+		expansionParserConfiguration.setCreatorTypeSelector("text");
+		expansionParserConfiguration.setLinkTag("link");
+		expansionParserConfiguration.setLinkTypeSelector("text");
+		expansionParserConfiguration.setDateTag("pubdate");
+		expansionParserConfiguration.setDateTypeSelector("text");
+		expansionParserConfiguration.setImageTag("media|thumbnail");
+		expansionParserConfiguration.setImageTagTypeSelector("attr");
+		expansionParserConfiguration.setDescriptionTag("description");
+		expansionParserConfiguration.setDescriptionTypeSelector("text");
 		
 		parserConfigurations.add(elMundoParserConfiguration);
 		parserConfigurations.add(abcParserConfiguration);
 		parserConfigurations.add(elPaisParserConfiguration);
 		parserConfigurations.add(elPeriodicoParserConfiguration);
+		parserConfigurations.add(expansionParserConfiguration);
 	}
 	
 	@Override

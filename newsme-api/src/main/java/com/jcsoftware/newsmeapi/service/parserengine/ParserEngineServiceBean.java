@@ -1,6 +1,11 @@
 package com.jcsoftware.newsmeapi.service.parserengine;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,16 +32,43 @@ public class ParserEngineServiceBean implements ParserEngineService {
 		List<RssItem> rssItems = new ArrayList<RssItem>();		
 		ParserConfiguration parserConfiguration = parserConfigurationService.findParserConfigurationByProviderId(providerId);
 		
+		Document document = null;
 		Connection connection = Jsoup.connect(rssUrl);
 		Document xmlString = null;
 		try {
 			xmlString = connection.get();
+			
+			document = Parser.xmlParser().parseInput(xmlString.toString(), "");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		Document document = Parser.xmlParser().parseInput(xmlString.toString(), "");
+		if (xmlString == null) {
+			String finalStr = "";
+			try {
+				URL url = new URL(rssUrl);
+				URLConnection conn = url.openConnection();
+				
+				BufferedReader br = new BufferedReader(
+                        new InputStreamReader(conn.getInputStream()));
+				
+				String inputLine;
+				while ((inputLine = br.readLine()) != null) {
+					finalStr = finalStr + inputLine;
+				}
+				
+				document = Parser.xmlParser().parseInput(finalStr.toString(), ""); 
+				
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+				 
 		String itemTag = parserConfiguration.getItemTag();
 		for (Element element : document.select(itemTag)) {
 			System.out.println(element);
@@ -56,7 +88,11 @@ public class ParserEngineServiceBean implements ParserEngineService {
 		rssItem.setProviderId(parserConfiguration.getProviderId());
 		rssItem.setTitle(applyRule(element, parserConfiguration.getTitleTag(), parserConfiguration.getTitleTypeSelector()));
 		rssItem.setAuthor(applyRule(element, parserConfiguration.getCreatorTag(), parserConfiguration.getCreatorTypeSelector()));
-		rssItem.setDescription(applyRule(element, parserConfiguration.getDescriptionTag(), parserConfiguration.getDescriptionTypeSelector()));
+		
+		String description = applyRule(element, parserConfiguration.getDescriptionTag(), parserConfiguration.getDescriptionTypeSelector());
+		
+		
+		rssItem.setDescription(description.length() < 80 ? description : description.substring(0, 250) + "...");
 		rssItem.setLink(applyRule(element, parserConfiguration.getLinkTag(), parserConfiguration.getLinkTypeSelector()));
 		rssItem.setDate(applyRule(element, parserConfiguration.getDateTag(), parserConfiguration.getDateTypeSelector()));
 		rssItem.setImageUrl(applyRule(element, parserConfiguration.getImageTag(), parserConfiguration.getImageTagTypeSelector()));

@@ -44,10 +44,18 @@ public class InMemoryProviderDao implements ProviderDao {
 		elPeriodicoProvider.setProviderUrl("http://www.elperiodico.com/es/");
 		elPeriodicoProvider.setRssUrl("http://www.elperiodico.com/es/rss/rss_portada.xml");
 
+		Provider expansionProvider = new Provider();
+		expansionProvider.setId(5);
+		expansionProvider.setName("EXPANSION NEWS");
+		expansionProvider.setDescription("Proveedor EXPANSION");
+		expansionProvider.setProviderUrl("http://www.expansion.com/");
+		expansionProvider.setRssUrl("http://expansion.feedsportal.com/rss/portada.xml");
+		
 		providers.add(elMundoProvider);
 		providers.add(abcProvider);
 		providers.add(elPaisProvider);
 		providers.add(elPeriodicoProvider);
+		providers.add(expansionProvider);
 
 	}
 
